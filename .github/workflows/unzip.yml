@@ -1,0 +1,3 @@
+on: push
+permissions: {contents: write}
+jobs: {unzip: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {run: "if [ -f fotos_obras_framer.zip ]; then unzip -o -j fotos_obras_framer.zip '*.jpg' -d . && git rm -q fotos_obras_framer.zip && git config user.name bot && git config user.email bot@users.noreply.github.com && git add -A && git commit -m fotos && git push; fi"}]}}
